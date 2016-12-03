@@ -6,14 +6,17 @@ const data = require('./data');
 
 //middleware 
 app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
+app.use(BodyParser.urlencoded({ extended: false }));
+
+////////////// HELPER FNS ////////////////
 
 //TODO: add routes for POST, PUT, DELETE
 
 //start with POST request to create a new todo list
 app.post('/api/task', ((req, res) => {
 	//push the user input into data.tasks
-	res.send(data.tasks);
+	data.push(req.body.body); //currently not working
+	res.send(data);
 }));
 
 //PUT
