@@ -1,5 +1,5 @@
 const data = {
-	tasks: ['startMVP', 'make significant progress', 'eat a good meal tonight'];
+	tasks: ['startMVP', 'make significant progress', 'eat a good meal tonight']
 };
 
-export {data};
+module.exports = data;
