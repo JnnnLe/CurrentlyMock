@@ -1,0 +1,34 @@
+{
+  "name": "currentlyMock",
+  "version": "1.0.0",
+  "description": "This a Currently Chrome extension mock. I will not implement the steps to make this project a Chrome extension, rather a simple CRUD application using React, Express.js and MongoDB.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JnnnLe/CurrentlyMock.git"
+  },
+  "keywords": [
+    "mockCurrently",
+    "React",
+    "Express.js",
+    "MongoDB"
+  ],
+  "author": "Jennifer Lê",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JnnnLe/CurrentlyMock/issues"
+  },
+  "homepage": "https://github.com/JnnnLe/CurrentlyMock#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-latest": "^6.16.0"
+  }
+}
