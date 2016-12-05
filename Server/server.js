@@ -40,7 +40,7 @@ app.use(BodyParser.urlencoded({ extended: true }));
 app.post('/api/tasks', ((req, res) => {
   new Task(req.body).save() //saved to db
   .then((task) => { 
-  	res.send(task)
+  	res.send(task);
   })
   .catch((error) => {
   	res.status(500).send(error);
@@ -59,9 +59,15 @@ app.get('/api/tasks', ((req, res) => {
 }));
 
 //PUT
-app.put('/api/tasks/:id', ((req, res) => {
+app.put('/api/tasks/', ((req, res) => {
 	//find task and update it's context
-  
+  Task.update({id: req.body.id}, req.body).exec()
+  .then((task) => {
+  	res.send(task);
+  })
+  .catch((error) => {
+  	res.status(500).send(error);
+  });
 }));
 
 //DELETE
