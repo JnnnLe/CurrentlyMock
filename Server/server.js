@@ -12,21 +12,28 @@ Mongoose.connect('mongodb://localhost/todoList');
 //Success, console verified
 var db = Mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', (() => console.log('We are connected to to the database.')));
+db.once('open', (() => console.log('Also, connected to to the database.')));
+
+//creating a task Schema
+const taskSchema = Mongoose.Schema({
+  item: String
+});
+
+//compliling Schema into Model
+const Task = Mongoose.model('Task', taskSchema);
 
 //middleware 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
-////////////// HELPER FNS ////////////////
-
-//TODO: add routes for POST, PUT, DELETE
-
 //start with POST request to create a new todo list
 app.post('/api/task', ((req, res) => {
-	//push the user input into data.tasks
-	data.push(req.body.body); //currently not working
-	res.send(data);
+  
+}));
+
+//GET 
+app.post('/api/task', ((req, res) => {
+  
 }));
 
 //PUT
