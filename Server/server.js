@@ -75,9 +75,10 @@ app.put('/api/tasks/', ((req, res) => {
 app.delete('/api/tasks/:id', ((req, res) => {
 	//find task and delete it 
 	const id = req.params.id;
-	Task.delete({where: {id: id}}).exec()
-	.then ((numOfDeletedItem) => {
-		numOfDeletedItem < 1 ? res.sendStatus(404) : res.send();
+
+	Task.find({_id: id}).remove().exec()
+	.then (() => {
+		res.status(200).send('Task deleted');
   })
   .catch((error) => {
   	res.status(500).send(error);
