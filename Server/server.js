@@ -2,7 +2,8 @@
 const Express = require('express');
 const BodyParser = require('body-parser');
 const data = require('./data');
-const Mongoose = require('mongoose')
+const Mongoose = require('mongoose');
+Mongoose.Promise = Promise;
 
 const app = Express();
 
@@ -15,34 +16,46 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', (() => console.log('Also, connected to to the database.')));
 
 //creating a task Schema
-const taskSchema = Mongoose.Schema({
-  item: String
+const taskSchema = new Mongoose.Schema({
+	item: String,
 });
 
 //compliling Schema into Model
-const Task = Mongoose.model('Task', taskSchema);
+const Task = Mongoose.model('task', taskSchema);
 
 //middleware 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
 //start with POST request to create a new todo list
-app.post('/api/task', ((req, res) => {
-  
+app.post('/api/tasks', ((req, res) => {
+  new Task(req.body).save()
+  .then((task) => { 
+  	res.send(task)
+  })
+  .catch((error) => {
+  	res.status(500).send(error);
+  });
 }));
 
 //GET 
-app.post('/api/task', ((req, res) => {
-  
+app.get('/api/tasks', ((req, res) => {
+  Task.find({}).exec()
+  .then((task) => {
+  	res.send(task);
+  })
+  .catch((error) => {
+  	res.status(500).send(error);
+  });
 }));
 
 //PUT
-app.put('/api/task', ((req, res) => {
+app.put('/api/tasks', ((req, res) => {
 	//find task and update it's context
 }));
 
 //DELETE
-app.delete('/api/task', ((req, res) => {
+app.delete('/api/tasks', ((req, res) => {
 	//find task and delete it 
 }));
 
