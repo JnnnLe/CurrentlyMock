@@ -1,12 +1,22 @@
 //setup server here
 const Express = require('express');
 const BodyParser = require('body-parser');
-const app = Express();
 const data = require('./data');
+const Mongoose = require('mongoose')
+
+const app = Express();
+
+//open connection to mongoose db - pending connection
+Mongoose.connect('mongodb://localhost/todoList');
+
+//Success, console verified
+var db = Mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', (() => console.log('We are connected to to the database.')));
 
 //middleware 
 app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: false }));
+app.use(BodyParser.urlencoded({ extended: true }));
 
 ////////////// HELPER FNS ////////////////
 
