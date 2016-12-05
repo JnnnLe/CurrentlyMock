@@ -20,6 +20,15 @@ const taskSchema = new Mongoose.Schema({
 	item: String,
 });
 
+//options for _id + _v
+taskSchema.options.toJSON = {
+	transform: (docStoreFrmDB, returnObj) => {
+		returnObj.id = returnObj._id;
+		delete returnObj._id;
+		delete returnObj.__v;
+	}
+};
+
 //compliling Schema into Model
 const Task = Mongoose.model('task', taskSchema);
 
@@ -50,9 +59,9 @@ app.get('/api/tasks', ((req, res) => {
 }));
 
 //PUT
-app.put('/api/tasks', ((req, res) => {
+app.put('/api/tasks/:id', ((req, res) => {
 	//find task and update it's context
-
+  
 }));
 
 //DELETE
