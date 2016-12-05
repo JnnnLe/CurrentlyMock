@@ -58,10 +58,11 @@ app.get('/api/tasks', ((req, res) => {
   });
 }));
 
-//PUT
+//PUT 
 app.put('/api/tasks/', ((req, res) => {
+
 	//find task and update it's context
-  Task.update({id: req.body.id}, req.body).exec()
+  Task.update({_id: req.body.id}, req.body).exec()
   .then((task) => {
   	res.send(task);
   })
@@ -70,9 +71,17 @@ app.put('/api/tasks/', ((req, res) => {
   });
 }));
 
-//DELETE
-app.delete('/api/tasks', ((req, res) => {
+// //DELETE -- Currently not working
+app.delete('/api/tasks/:id', ((req, res) => {
 	//find task and delete it 
+	const id = req.params.id;
+	Task.delete({where: {id: id}}).exec()
+	.then ((numOfDeletedItem) => {
+		numOfDeletedItem < 1 ? res.sendStatus(404) : res.send();
+  })
+  .catch((error) => {
+  	res.status(500).send(error);
+  });
 }));
 
 
