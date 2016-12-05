@@ -29,7 +29,7 @@ app.use(BodyParser.urlencoded({ extended: true }));
 
 //start with POST request to create a new todo list
 app.post('/api/tasks', ((req, res) => {
-  new Task(req.body).save()
+  new Task(req.body).save() //saved to db
   .then((task) => { 
   	res.send(task)
   })
@@ -52,6 +52,7 @@ app.get('/api/tasks', ((req, res) => {
 //PUT
 app.put('/api/tasks', ((req, res) => {
 	//find task and update it's context
+
 }));
 
 //DELETE
