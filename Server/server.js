@@ -71,7 +71,7 @@ app.put('/api/tasks/', ((req, res) => {
   });
 }));
 
-// //DELETE -- Currently not working
+// //DELETE
 app.delete('/api/tasks/:id', ((req, res) => {
 	//find task and delete it 
 	const id = req.params.id;
