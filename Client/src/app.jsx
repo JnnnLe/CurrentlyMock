@@ -7,7 +7,7 @@ class App extends React.Component {
 	render () {
 		return (
 			<div>
-				<p>Hello there, you did it!</p>
+				<p>Happy holidays!</p>
 				<TodoList />
 			</div>
 		);

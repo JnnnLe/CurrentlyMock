@@ -1,4 +1,5 @@
 //setup server here
+const Task = require('./taskModel');
 const Express = require('express');
 const BodyParser = require('body-parser');
 const data = require('./data');
@@ -15,26 +16,10 @@ var db = Mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', (() => console.log('Also, connected to to the database.')));
 
-//creating a task Schema
-const taskSchema = new Mongoose.Schema({
-	item: String,
-});
-
-//options for _id + _v
-taskSchema.options.toJSON = {
-	transform: (docStoreFrmDB, returnObj) => {
-		returnObj.id = returnObj._id;
-		delete returnObj._id;
-		delete returnObj.__v;
-	}
-};
-
-//compliling Schema into Model
-const Task = Mongoose.model('task', taskSchema);
-
 //middleware 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
+
 
 //start with POST request to create a new todo list
 app.post('/api/tasks', ((req, res) => {
