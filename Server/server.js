@@ -19,7 +19,8 @@ db.once('open', (() => console.log('Also, connected to to the database.')));
 //middleware 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
-
+app.use(Express.static('../Client')); //No need for __DIRNAME
+// go into client and serve ALL those files
 
 //start with POST request to create a new todo list
 app.post('/api/tasks', ((req, res) => {
