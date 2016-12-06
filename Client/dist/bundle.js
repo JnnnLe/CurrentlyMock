@@ -73,31 +73,31 @@
 	
 	
 	var App = function (_React$Component) {
-		_inherits(App, _React$Component);
+	  _inherits(App, _React$Component);
 	
-		function App() {
-			_classCallCheck(this, App);
+	  function App() {
+	    _classCallCheck(this, App);
 	
-			return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	  }
 	
-		_createClass(App, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'p',
-						null,
-						'Happy holidays!'
-					),
-					_react2.default.createElement(_todoList2.default, null)
-				);
-			}
-		}]);
+	  _createClass(App, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Happy holidays!'
+	        ),
+	        _react2.default.createElement(_todoList2.default, null)
+	      );
+	    }
+	  }]);
 	
-		return App;
+	  return App;
 	}(_react2.default.Component);
 	
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
@@ -22069,37 +22069,44 @@
 	
 	//this will be where we bind and set the state
 	var TodoList = function (_React$Component) {
-		_inherits(TodoList, _React$Component);
+	  _inherits(TodoList, _React$Component);
 	
-		function TodoList(props) {
-			_classCallCheck(this, TodoList);
+	  function TodoList(props) {
+	    _classCallCheck(this, TodoList);
 	
-			var _this = _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this, props));
 	
-			_this.state = {
-				tasks: [{
-					id: 0,
-					task: 'brush teeth'
-				}] //list of tasks 
-			};
-			return _this;
-		}
+	    _this.state = {
+	      tasks: [{
+	        task: 'brush teeth'
+	      }] //list of tasks 
+	    };
+	    return _this;
+	  }
 	
-		_createClass(TodoList, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					this.state.tasks.map(function (task) {
-						return _react2.default.createElement(_task2.default, null);
-					})
-				);
-			}
-		}]);
+	  //get tasks 
 	
-		return TodoList;
+	
+	  _createClass(TodoList, [{
+	    key: 'getTask',
+	    value: function getTask() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        this.state.tasks.map(function (taskItem) {
+	          return _react2.default.createElement(_task2.default, { singleTask: taskItem });
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return TodoList;
 	}(_react2.default.Component);
+	
+	;
 	
 	module.exports = TodoList;
 
@@ -22127,40 +22134,40 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Task = function (_React$Component) {
-		_inherits(Task, _React$Component);
+	  _inherits(Task, _React$Component);
 	
-		function Task() {
-			_classCallCheck(this, Task);
+	  function Task() {
+	    _classCallCheck(this, Task);
 	
-			return _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this));
+	  }
 	
-		_createClass(Task, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'button',
-						null,
-						'Delete'
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						'Task name'
-					),
-					_react2.default.createElement(
-						'button',
-						null,
-						'Edit'
-					)
-				);
-			}
-		}]);
+	  _createClass(Task, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'button',
+	          null,
+	          'Delete'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.singleTask.task
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          null,
+	          'Edit'
+	        )
+	      );
+	    }
+	  }]);
 	
-		return Task;
+	  return Task;
 	}(_react2.default.Component);
 	
 	module.exports = Task;

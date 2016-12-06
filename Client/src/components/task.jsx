@@ -1,15 +1,19 @@
 import React from 'react';
 
 class Task extends React.Component {
-	render () {
-		return (
-			<div>
-			  <button>Delete</button>
-			  <p>Task name</p>
-			  <button>Edit</button>
-			</div>
-		);
-	}
+  constructor() {
+    super()
+  }
+
+  render () {
+    return (
+      <div>
+        <button>Delete</button>
+        <p>{this.props.singleTask.task}</p>
+        <button>Edit</button>
+      </div>
+    );
+  }
 }
 
 module.exports = Task;
