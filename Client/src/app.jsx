@@ -1,12 +1,17 @@
 // set up client here 
-
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDOM from 'react-dom';
+import {TodoList} from './todoList.jsx';
 
 class App extends React.Component {
 	render () {
-		return <p>Hello there Gorgeous, you did it!</p>;
+		return (
+			<div>
+				<p>Hello there, you did it!</p>
+				<TodoList />
+			</div>
+		);
 	}
 }
 
-render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
