@@ -59,7 +59,9 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _todoList = __webpack_require__(/*! ./todoList.jsx */ 178);
+	var _todoList = __webpack_require__(/*! ./components/todoList.jsx */ 178);
+	
+	var _todoList2 = _interopRequireDefault(_todoList);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -90,7 +92,7 @@
 						null,
 						'Happy holidays!'
 					),
-					_react2.default.createElement(_todoList.TodoList, null)
+					_react2.default.createElement(_todoList2.default, null)
 				);
 			}
 		}]);
@@ -22040,17 +22042,75 @@
 
 /***/ },
 /* 178 */
-/*!*********************************!*\
-  !*** ./Client/src/todoList.jsx ***!
-  \*********************************/
+/*!********************************************!*\
+  !*** ./Client/src/components/todoList.jsx ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.TodoList = undefined;
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _task = __webpack_require__(/*! ./task.jsx */ 179);
+	
+	var _task2 = _interopRequireDefault(_task);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	//this will be where we bind and set the state
+	var TodoList = function (_React$Component) {
+		_inherits(TodoList, _React$Component);
+	
+		function TodoList(props) {
+			_classCallCheck(this, TodoList);
+	
+			var _this = _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this, props));
+	
+			_this.state = {
+				tasks: [{
+					id: 0,
+					task: 'brush teeth'
+				}] //list of tasks 
+			};
+			return _this;
+		}
+	
+		_createClass(TodoList, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					this.state.tasks.map(function (task) {
+						return _react2.default.createElement(_task2.default, null);
+					})
+				);
+			}
+		}]);
+	
+		return TodoList;
+	}(_react2.default.Component);
+	
+	module.exports = TodoList;
+
+/***/ },
+/* 179 */
+/*!****************************************!*\
+  !*** ./Client/src/components/task.jsx ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -22066,54 +22126,44 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var TodoList = function (_React$Component) {
-		_inherits(TodoList, _React$Component);
+	var Task = function (_React$Component) {
+		_inherits(Task, _React$Component);
 	
-		function TodoList(props) {
-			_classCallCheck(this, TodoList);
+		function Task() {
+			_classCallCheck(this, Task);
 	
-			var _this = _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).call(this, props));
-	
-			_this.state = { likesCount: 0 };
-			_this.onLike = _this.onLike.bind(_this);
-			return _this;
+			return _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).apply(this, arguments));
 		}
 	
-		_createClass(TodoList, [{
-			key: 'onLike',
-			value: function onLike() {
-				var newLikesCount = this.state.likesCount + 1;
-				this.setState({ likesCount: newLikesCount });
-			}
-		}, {
+		_createClass(Task, [{
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
 					null,
-					'Likes : ',
 					_react2.default.createElement(
-						'span',
+						'button',
 						null,
-						this.state.likesCount
+						'Delete'
 					),
 					_react2.default.createElement(
-						'div',
+						'p',
 						null,
-						_react2.default.createElement(
-							'button',
-							{ onClick: this.onLike },
-							'Like Me'
-						)
+						'Task name'
+					),
+					_react2.default.createElement(
+						'button',
+						null,
+						'Edit'
 					)
 				);
 			}
 		}]);
 	
-		return TodoList;
+		return Task;
 	}(_react2.default.Component);
 	
-	exports.TodoList = TodoList;
+	module.exports = Task;
 
 /***/ }
 /******/ ]);

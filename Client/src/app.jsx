@@ -1,7 +1,7 @@
 // set up client here 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {TodoList} from './todoList.jsx';
+import TodoList from './components/todoList.jsx';
 
 class App extends React.Component {
 	render () {
