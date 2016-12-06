@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import Task from './task.jsx';
 import InputTask from './inputTask.jsx';
 
@@ -8,14 +9,31 @@ class TodoList extends React.Component {
     super(props)
 
     this.state = {
-      tasks: [{
-        task: 'brush teeth'
-      }] //list of tasks 
+      tasks: [
+        { task: 'brush teeth'}, 
+        { task: 'do laundry'}
+      ] //list of tasks 
     };
     this.addTask = this.addTask.bind(this);
   } 
 
   //TODO: HTTP (get) tasks 
+  getTasksUponLoading () {
+    $.ajax({
+        method: 'GET',
+        url: '/api/tasks',
+        success: (data) => {
+          const arrayOfTasks = data.map((task) => {task: task.item});
+          debugger;
+          this.setState({tasks: arrayOfTasks});
+        }
+     });
+  }
+
+  componentDidMount() {
+    this.getTasksUponLoading();
+    // this.getTasksUponLoading.call(this);
+  }
 
   //add a task
   addTask (task) {

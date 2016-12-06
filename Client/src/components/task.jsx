@@ -5,6 +5,10 @@ class Task extends React.Component {
     super()
   }
 
+  
+  
+  //onDoubleClickEditTask
+
   render () {
     return (
       <div>

@@ -4,6 +4,7 @@ const Express = require('express');
 const BodyParser = require('body-parser');
 const data = require('./data');
 const Mongoose = require('mongoose');
+const path = require('path');
 Mongoose.Promise = Promise;
 
 const app = Express();
@@ -15,11 +16,11 @@ Mongoose.connect('mongodb://localhost/todoList');
 var db = Mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', (() => console.log('Also, connected to to the database.')));
-
+  
 //middleware 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
-app.use(Express.static('../Client')); //No need for __DIRNAME
+app.use(Express.static(path.join(__dirname, '../Client'))); //No need for __DIRNAME
 // go into client and serve ALL those files
 
 //start with POST request to create a new todo list
@@ -72,4 +73,4 @@ app.delete('/api/tasks/:id', ((req, res) => {
 }));
 
 
-app.listen(2424, (() => console.log('Hello world, server listening on port:2424')));
+app.listen(2425, (() => console.log('Hello world, server listening on port:2425')));
