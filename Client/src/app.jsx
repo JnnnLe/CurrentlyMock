@@ -13,7 +13,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <p>Happy holidays!</p>
+        <p>Congrats on your first solo project! You should be proud.</p>
         <TodoList />
       </div>
     );

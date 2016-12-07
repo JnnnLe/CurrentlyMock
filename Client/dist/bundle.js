@@ -95,7 +95,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          null,
-	          'Happy holidays!'
+	          'Congrats on your first solo project! You should be proud.'
 	        ),
 	        _react2.default.createElement(_todoList2.default, null)
 	      );
@@ -22098,7 +22098,6 @@
 	
 	  //TODO: HTTP (get) tasks 
 	
-	
 	  _createClass(TodoList, [{
 	    key: 'getTasksUponLoading',
 	    value: function getTasksUponLoading() {
@@ -22111,14 +22110,13 @@
 	          var arrayOfTasks = data.map(function (task) {
 	            task: task.item;
 	          });
-	          debugger;
 	          _this2.setState({ tasks: arrayOfTasks });
 	        }
 	      });
 	    }
 	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
 	      this.getTasksUponLoading();
 	      // this.getTasksUponLoading.call(this);
 	    }
@@ -22128,7 +22126,6 @@
 	  }, {
 	    key: 'addTask',
 	    value: function addTask(task) {
-	      console.log('this.state: ', this.state);
 	      this.state.tasks.push({ task: task });
 	      this.setState({
 	        tasks: this.state.tasks
@@ -32410,10 +32407,10 @@
 	var Task = function (_React$Component) {
 	  _inherits(Task, _React$Component);
 	
-	  function Task() {
+	  function Task(props) {
 	    _classCallCheck(this, Task);
 	
-	    return _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this));
+	    return _possibleConstructorReturn(this, (Task.__proto__ || Object.getPrototypeOf(Task)).call(this, props));
 	  }
 	
 	  //onDoubleClickEditTask

@@ -18,26 +18,26 @@ class TodoList extends React.Component {
   } 
 
   //TODO: HTTP (get) tasks 
+
   getTasksUponLoading () {
+
     $.ajax({
         method: 'GET',
         url: '/api/tasks',
         success: (data) => {
           const arrayOfTasks = data.map((task) => {task: task.item});
-          debugger;
           this.setState({tasks: arrayOfTasks});
         }
      });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getTasksUponLoading();
     // this.getTasksUponLoading.call(this);
   }
 
   //add a task
   addTask (task) {
-    console.log('this.state: ', this.state);
     this.state.tasks.push({task: task});
     this.setState({
       tasks: this.state.tasks

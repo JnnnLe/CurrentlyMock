@@ -1,12 +1,10 @@
 import React from 'react';
 
 class Task extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
-  
-  
   //onDoubleClickEditTask
 
   render () {
